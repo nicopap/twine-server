@@ -1,0 +1,52 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-24T09:53:27+02:00
+
+====== Api spec ======
+Created Wednesday 24 April 2019
+
+Twine Server has the following basic functionalities:
+* Persisting, saving, creating and serving Twine2 stories
+* Locking a story currently being edited.
+
+
+====== Type definitions ======
+'''
+StorySummary = { "name": StoryName, "editor": UserName | nil }
+LockId is an opaque server-specified type
+StoryFile is the raw Twine story html file.
+UserName ~= [[::unicode_alphanum::] _-]{2-30}
+StoryName ~= [[::unicode_alphanum::] _-]{2-100}
+'''
+
+
+====== API endpoints ======
+The mutal exclusion lock is expiring, the '':StoryName/keepup'' endpoint needs to be periodically pushed to to keep the "writting right" on the story.
+
+===== Affero License compliance =====
+GET ''/source.html''
+returns: A page explaining the affero license and provides a link to the github project page.
+Technically, only needed for someone working on a fork of this project.
+
+===== Get the list of available stories and their status =====
+GET ''/stories''
+returns ''[StorySummary]''
+
+===== Get the content and status of a given story =====
+GET ''/stories/:StoryName''
+returns ''StoryFile''
+
+===== Aquire the exclusive editing right on a story =====
+POST ''/stories/:StoryName/open { "user": UserName }''
+returns ''LockId''
+
+===== Concede exclusive editing rights on a story =====
+POST ''/stories/:StoryName/close { "lock": LockId }''
+
+===== Keep the exclusive editing right on a story =====
+POST ''/stories/:StoryName/keepup { "lock": LockId }''
+note: if it isn't pooled every 10 minutes, the ''LockId'' expires and can't be used to save the story
+
+===== Save a story when you have editing rights =====
+POST ''/stories/:StoryName/save { "lock": LockId, "file": StoryFile }''
+

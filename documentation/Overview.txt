@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-24T09:40:52+02:00
+
+====== Overview ======
+Created Wednesday 24 April 2019
+
+Twine-Server provides a basic collaborative environment for working with the Twine2 nonlinear story editor.
+This document outlines the design decisions and REST API defined for the server.
+
+* [[+Api spec]]
+
+===== Design goals =====
+* Enable someone to work **exclusively **on a story, maybe having a lock in the story selection screen with the name of the person working on it.
+* Enable **copying any story** as to let someone STILL work on a story despite someone else working on it too.
+* Enable the storing and loading of stories (it is required to have multiple possible stories).
+* Keep the ability to import locally the story.
