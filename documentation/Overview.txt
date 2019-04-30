@@ -9,9 +9,16 @@ Twine-Server provides a basic collaborative environment for working with the Twi
 This document outlines the design decisions and REST API defined for the server.
 
 * [[+Api spec]]
+* [[+Story locker design]]
 
 ===== Design goals =====
 * Enable someone to work **exclusively **on a story, maybe having a lock in the story selection screen with the name of the person working on it.
 * Enable **copying any story** as to let someone STILL work on a story despite someone else working on it too.
 * Enable the storing and loading of stories (it is required to have multiple possible stories).
 * Keep the ability to import locally the story.
+
+===== Open questions =====
+* What if someone creates a new story and someone else is on the story list screen? The list should be updated?
+* What if someone "locks" a story while someone else is at the story screen? The list doesn't reflect the actual state of the server. => Solution: display an error when attempting to open a locked story, and when that happens, request from server updated story listing.
+* Is this generic enough to be adaptable to other workflows?
+* Does a generic dead-simple similar server exists?

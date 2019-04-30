@@ -32,13 +32,15 @@ Technically, only needed for someone working on a fork of this project.
 GET ''/stories''
 returns ''[StorySummary]''
 
-===== Get the content and status of a given story =====
+===== Get the content of a given story =====
 GET ''/stories/:StoryName''
 returns ''StoryFile''
+errors: 404 if the given story doesn't exist
 
 ===== Aquire the exclusive editing right on a story =====
 POST ''/stories/:StoryName/open { "user": UserName }''
 returns ''LockId''
+returns 400 if the story is already open
 
 ===== Concede exclusive editing rights on a story =====
 POST ''/stories/:StoryName/close { "lock": LockId }''

@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-24T11:51:01+02:00
+
+====== Story locker design ======
+Created Wednesday 24 April 2019
+
+Needs to:
+* Persist data on disk, access and modify it.
+* Keep track of "lock" to which the stories being edited are associated, in addition to the declared name of the user who owns the lock
+* File system may not reflect what stories exists, and specifically do not old any information on which stories are "locked"

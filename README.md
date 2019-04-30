@@ -13,14 +13,11 @@ editing.
 The project uses the standard [sbt](https://www.scala-sbt.org/) tool for
 building and debugging.
 
-**The initial commit doesn't have source code** (because it doesn't work) so
-please be patient.
-
 ## Documentation
 
-the `documentation` file contains an overview of the API and design decisions.
-The project aims to be minimal, but documenting since the beginning is always a
-good idea.
+the `documentation` file contains an overview of the outgoing API and design
+decisions. The project aims to be minimal, but documenting since the beginning
+is always a good idea.
 
 The doc is written in the [Zim wiki](https://zim-wiki.org/) format.
 Zim  is the prefered tool for reading the doc, however, the wiki format is
@@ -30,7 +27,7 @@ already quite readable in plain text.
 
 (c) Nicola Papale, licensed under AGPL for the source code and Creative Commons
 Attribution-ShareAlike 3.0 for the documentation.
-See the AGPL file at the root of the git tree and
+See the `AGPL` file at the root of the git tree and
 <https://creativecommons.org/licenses/by-sa/3.0/legalcode> for further
 informations.
 
