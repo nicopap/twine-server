@@ -18,6 +18,8 @@ This document outlines the design decisions and REST API defined for the server.
 * Keep the ability to import locally the story.
 
 ===== Open questions =====
+* **What happens when you use a lockId from a different story to attempt to save a specific story**.
+	* Answer: You save to the **other** story (this is bad, there should be some sort of checking that the story corresponds to  the provided lockId).
 * What if someone creates a new story and someone else is on the story list screen? The list should be updated?
 * What if someone "locks" a story while someone else is at the story screen? The list doesn't reflect the actual state of the server. => Solution: display an error when attempting to open a locked story, and when that happens, request from server updated story listing.
 * Is this generic enough to be adaptable to other workflows?
