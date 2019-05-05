@@ -13,6 +13,11 @@ editing.
 The project uses the standard [sbt](https://www.scala-sbt.org/) tool for
 building and debugging.
 
+## Testing
+
+A bash script that use curl to communicate with the API endpoints is available
+in the `tests` directory for manual testing.
+
 ## Documentation
 
 the `documentation` file contains an overview of the outgoing API and design
@@ -26,8 +31,8 @@ already quite readable in plain text.
 ## Licenses
 
 (c) Nicola Papale, licensed under AGPL for the source code and Creative Commons
-Attribution-ShareAlike 3.0 for the documentation.
-See the `AGPL` file at the root of the git tree and
+Attribution-ShareAlike 3.0 for the documentation (API description and design
+justification). See the `AGPL` file at the root of the git tree and
 <https://creativecommons.org/licenses/by-sa/3.0/legalcode> for further
 informations.
 
