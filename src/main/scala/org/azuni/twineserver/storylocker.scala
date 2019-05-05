@@ -96,7 +96,7 @@ class StoryLocker(
     locks: Map[LockId, (StoryName, ExpiringLock[File])],
     editors: Map[StoryName, (LockId, String)],
 ) {
-  def openDir(dirName: String): Option[File] =
+  private def openDir(dirName: String): Option[File] =
     Try(File(dirName)).toOption
       .flatMap(s => if (s.isDirectory) Some(s) else None)
 
@@ -179,14 +179,18 @@ class StoryLocker(
     } yield Right(locks.update(lockId, (storyAndLock._1, refreshed)))
 }
 
-object ExpiringLock {
+private object ExpiringLock {
   def init[T](inner: T, timeout: Duration): ExpiringLock[T] =
     new ExpiringLock(inner, Instant.now, timeout)
 }
 
 /** A container with content only accessible for a set amount of time.
   */
-case class ExpiringLock[T](inner: T, lastRefresh: Instant, timeout: Duration) {
+private case class ExpiringLock[T](
+    inner: T,
+    lastRefresh: Instant,
+    timeout: Duration,
+) {
   def withAccess[U](onSuccess: () => U): Option[U] = {
     if (isExpired) None else Some(onSuccess())
   }

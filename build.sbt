@@ -7,10 +7,10 @@ lazy val root = (project in file("."))
     name := "twine-server",
     scalaVersion := "2.12.7",
     libraryDependencies ++= Seq(
-      "com.github.finagle" %% "finchx-core"  % finchVersion,
-      "com.github.finagle" %% "finchx-circe"  % finchVersion,
+      "com.github.finagle" %% "finch-core" % finchVersion,
+      "com.github.finagle" %% "finch-circe" % finchVersion,
       "io.circe" %% "circe-generic" % circeVersion,
-      "org.scalatest"      %% "scalatest"    % scalatestVersion % "test",
+      "org.scalatest" %% "scalatest"  % scalatestVersion % "test",
       "nl.gn0s1s" %% "base64" % "0.2.2-RC1",
       "biz.neumann" %% "nice-url-encode-decode" % "1.5",
       "com.github.pathikrit" %% "better-files" % "3.7.1",
