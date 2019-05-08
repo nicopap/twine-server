@@ -88,6 +88,15 @@ object StorySummary {
 case class StorySummary(name: StoryName, editor: Option[String])
 
 /** Manages files available for editing.
+  *
+  *  NOTE: a major bummer is the strong coupling between this object and the
+  *  file system. This limits unit testing.
+  *  A possible fix would be to parametrize the object over its effects (file
+  *  system and time).
+  *  This is overengineering at the current state of the project.
+  *
+  *  However, on the short term, making the directory in which files are stored
+  *  and the expiration length of locks parametrable would be very useful.
   */
 object StoryLocker {
   def init(): StoryLocker = new StoryLocker(Map.empty, Map.empty)

@@ -21,7 +21,7 @@ function story {
 function open {
     __lockId=$(curl -s -H 'Content-Type: application/json' \
         -d "{\"user\":\"$2\"}" \
-        "http://localhost:8081/stories/$1/open")
+        "http://localhost:8081/stories/$1/open" | tee /dev/stderr)
     declare -g ${3:-__lockId__}=$(sed 's/"\([^"]*\)"/\1/' <<<"$__lockId")
 }
 
